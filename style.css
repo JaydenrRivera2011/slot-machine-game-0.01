@@ -4,11 +4,20 @@
   --text:#f5f1ff; --muted:#aaa3cf; --radius:14px;
   --shadow:0 10px 30px rgba(0,0,0,.5);
 }
+
+/* Themes used by store items */
 body.theme-neon{ --bg:#02030a; --bg2:#070016; --panel:#0d0030; --panel2:#16004a; --accent:#00ffe1; --accent2:#ff00d4; }
 body.theme-gold{ --bg:#1a1200; --bg2:#2a1d00; --panel:#3a2a00; --panel2:#4d3700; --accent:#ffd700; --accent2:#ff9500; }
 body.theme-candy{ --bg:#2a0033; --bg2:#3d0049; --panel:#56006a; --panel2:#700085; --accent:#ff4ed8; --accent2:#fff44e; }
 body.theme-forest{ --bg:#06200f; --bg2:#0a3018; --panel:#0f4022; --panel2:#15552d; --accent:#7cff9c; --accent2:#fff071; }
 body.theme-ocean{ --bg:#001a33; --bg2:#002b52; --panel:#003e75; --panel2:#005299; --accent:#4edcff; --accent2:#ffd24e; }
+
+/* Added placeholder themes so purchased themes have a visible effect */
+body.theme-lava{ --bg:#2b0a00; --bg2:#3a1500; --panel:#4c1f00; --panel2:#5e2b00; --accent:#ff6b00; --accent2:#ffde6b; }
+body.theme-ice{ --bg:#001219; --bg2:#00232b; --panel:#00353d; --panel2:#004d57; --accent:#9fe8ff; --accent2:#cfeeff; }
+body.theme-space{ --bg:#040014; --bg2:#0b0030; --panel:#1a0038; --panel2:#2b0050; --accent:#a9a9ff; --accent2:#ff9bf0; }
+body.theme-halloween{ --bg:#0a0402; --bg2:#220b00; --panel:#2b1200; --panel2:#3a1a00; --accent:#ff6600; --accent2:#ffcc66; }
+body.theme-xmas{ --bg:#001a0a; --bg2:#062f18; --panel:#063a1c; --panel2:#124f2a; --accent:#ff4d6d; --accent2:#ffde4d; }
 
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--text);
@@ -68,7 +77,7 @@ main{padding:20px;max-width:1200px;margin:0 auto}
 
 /* PAYTABLE */
 .paytable{background:var(--panel);padding:16px;border-radius:var(--radius);box-shadow:var(--shadow)}
-.paytable h3{margin-top:0;color:var(--accent)}
+.paytable h3{Margin-top:0;color:var(--accent)}
 .pt-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #333;font-size:14px}
 .pt-row .sym{font-size:24px}
 .tiny{font-size:11px;color:var(--muted)}
