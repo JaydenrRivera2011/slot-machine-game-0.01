@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Slots PVP — Pass & Spin</title>
+<link rel="stylesheet" href="slots.css"/>
+</head>
+<body>
+
+<!-- ===== GAME SETUP ===== -->
+<div id="setup-screen" class="overlay">
+  <div class="card">
+    <h1>⚔️ Slots PVP</h1>
+    <p>First to reach 777,777 points wins!</p>
+    
+    <label>Player 1 Name</label>
+    <input id="p1-name" maxlength="14" placeholder="Player 1"/>
+    
+    <label>Player 2 Name</label>
+    <input id="p2-name" maxlength="14" placeholder="Player 2"/>
+    
+    <label>Game Mode</label>
+    <select id="game-mode">
+      <option value="standard">Standard (Lucky Spin Symbols)</option>
+      <option value="chaos">Chaos (Wild +/- Multipliers)</option>
+      <option value="extreme">Extreme (Massive Swings)</option>
+    </select>
+    
+    <label>Starting Capital</label>
+    <select id="starting-capital">
+      <option value="0">0 (Pure Spin)</option>
+      <option value="100000">100,000</option>
+      <option value="250000">250,000</option>
+      <option value="500000">500,000</option>
+    </select>
+    
+    <button id="start-game" class="btn primary">Start Game</button>
+  </div>
+</div>
+
+<!-- ===== MAIN GAME ===== -->
+<div id="game-screen" class="hidden">
+  <header>
+    <div class="brand">⚔️ Slots PVP</div>
+    <div class="target">Target: 777,777 🎯</div>
+  </header>
+
+  <main>
+    <div class="arena">
+      <!-- PLAYER 1 SIDE -->
+      <div class="player-panel p1">
+        <div class="player-header">
+          <div class="player-name" id="p1-title">Player 1</div>
+          <div class="player-turn" id="p1-turn-badge">YOUR TURN</div>
+        </div>
+        
+        <div class="score-display">
+          <div class="label">Score</div>
+          <div class="score" id="p1-score">0</div>
+        </div>
+        
+        <div class="progress-bar">
+          <div class="progress-fill" id="p1-progress"></div>
+        </div>
+        <div class="progress-text" id="p1-progress-text">0 / 777,777</div>
+        
+        <div class="stats">
+          <div>Spins: <b id="p1-spins">0</b></div>
+          <div>Last: <b id="p1-last">—</b></div>
+          <div>Hot Streak: <b id="p1-streak">0</b> 🔥</div>
+        </div>
+      </div>
+
+      <!-- MIDDLE ZONE -->
+      <div class="middle-zone">
+        <div class="machine">
+          <div class="reels">
+            <div class="reel" id="reel-0">❓</div>
+            <div class="reel" id="reel-1">❓</div>
+            <div class="reel" id="reel-2">❓</div>
+          </div>
+          <div class="payline"></div>
+          <div class="result" id="result-msg">Press SPIN!</div>
+          <button id="spin-btn" class="btn spin">SPIN</button>
+        </div>
+
+        <div class="pass-zone">
+          <div class="pass-msg" id="pass-msg"></div>
+          <button id="pass-btn" class="btn pass hidden">📱 PASS DEVICE</button>
+        </div>
+      </div>
+
+      <!-- PLAYER 2 SIDE -->
+      <div class="player-panel p2">
+        <div class="player-header">
+          <div class="player-name" id="p2-title">Player 2</div>
+          <div class="player-turn" id="p2-turn-badge">waiting...</div>
+        </div>
+        
+        <div class="score-display">
+          <div class="label">Score</div>
+          <div class="score" id="p2-score">0</div>
+        </div>
+        
+        <div class="progress-bar">
+          <div class="progress-fill" id="p2-progress"></div>
+        </div>
+        <div class="progress-text" id="p2-progress-text">0 / 777,777</div>
+        
+        <div class="stats">
+          <div>Spins: <b id="p2-spins">0</b></div>
+          <div>Last: <b id="p2-last">—</b></div>
+          <div>Hot Streak: <b id="p2-streak">0</b> 🔥</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- WIN SCREEN (overlay) -->
+  <div id="win-screen" class="overlay hidden">
+    <div class="card victory">
+      <div class="crown">👑</div>
+      <h1 id="winner-name">Player 1</h1>
+      <p class="huge">WINS!</p>
+      <div class="final-stats">
+        <div><b id="winner-score">0</b> Points</div>
+        <div><b id="winner-spins">0</b> Spins</div>
+      </div>
+      <button id="new-game-btn" class="btn primary">New Game</button>
+    </div>
+  </div>
+
+  <!-- PAYTABLE MODAL -->
+  <div id="paytable-modal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Paytable</h2>
+        <button class="close-btn" onclick="closePaytable()">✕</button>
+      </div>
+      <div id="paytable-body"></div>
+    </div>
+  </div>
+
+  <footer>
+    <button class="btn ghost small" onclick="togglePaytable()">? Paytable</button>
+    <button class="btn ghost small danger" onclick="confirmReset()">Reset Game</button>
+  </footer>
+
+  <div id="toast-host"></div>
+</div>
+
+<script src="slots.js"></script>
+</body>
+</html>
